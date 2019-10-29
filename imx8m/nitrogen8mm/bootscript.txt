@@ -1,5 +1,9 @@
 setenv distro_bootpart 1
 
+#deassert reset line for atmel maxtouch touchscreen
+#TODO: Move to more appropriate place. It is being done here to meet a deadline.
+gpio set 7
+
 setexpr rval *0x30370068 \& 0x180
 if itest.s "x$rval" -eq "x100"; then
 	echo "Starting fastboot..."
